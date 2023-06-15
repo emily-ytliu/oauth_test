@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+<!--     引入套件 axios 等等post到後端路由去驗證 以及 google官方的套件-->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<body>
+  <div>GOOGLE 連結</div>
+<!--     content 放上申請的client_Id -->
+  <meta name="google-client_id" content="1002356771396-1oq45k50058k9jojm30u0cpkcgqlcpod.apps.googleusercontent.com">
+  
+<!--     放上第三方登入的button，按下去會觸發 onSignIn 的function -->
+  <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+    <!-- 產生 HTML 程式碼 -->
+    <div id="g_id_onload"
+    data-client_id="1002356771396-1oq45k50058k9jojm30u0cpkcgqlcpod.apps.googleusercontent.com"
+    data-context="use"
+    data-ux_mode="popup"
+    data-login_uri="https://oauth2.googleapis.com/token"
+    data-nonce=""
+    data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin"
+    data-type="standard"
+    data-shape="pill"
+    data-theme="outline"
+    data-text="continue_with"
+    data-size="large"
+    data-logo_alignment="left">
+    </div>
+  <script>
+    function onSignIn(googleUser) {
+      const url = "http://localhost:3000/auth/google"
+      
+//         會跳出去要求授權畫面，回來後才達得到token
+      let id_token = googleUser.getAuthResponse().id_token
+      
+//         拿到後傳到後端去驗證，路由可自行設定       
+       axios.post(url, {id_token})
+      .then(res => console.log('send to backend successfully'))
+      .catch(err => console.error('error: send id_token fail!'))
+   }
+  </script>
+</body>
+</html>

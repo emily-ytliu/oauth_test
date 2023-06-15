@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <a href="http://localhost:3000/auth/google"><button>google login</button></a> -->
+
+    <!-- 載入用戶端程式庫 -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <!-- 產生 HTML 程式碼 -->
+    <div id="g_id_onload"
+    data-client_id="1002356771396-1oq45k50058k9jojm30u0cpkcgqlcpod.apps.googleusercontent.com"
+    data-context="use"
+    data-ux_mode="popup"
+    data-login_uri="https://oauth2.googleapis.com/token"
+    data-nonce=""
+    data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin"
+    data-type="standard"
+    data-shape="pill"
+    data-theme="outline"
+    data-text="continue_with"
+    data-size="large"
+    data-logo_alignment="left">
+    </div>
+
+    
+    <a href="http://localhost:3000/auth/google"><button>google login</button></a>
+
+
+    
+</body>
+</html>
